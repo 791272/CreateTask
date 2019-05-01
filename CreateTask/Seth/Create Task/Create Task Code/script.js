@@ -227,7 +227,7 @@ function display(firstFiveArray, megaArray, tiesArray, mostCommon, leastCommon, 
   }
 }
 
-function addListener(x, y, otherX, otherY, thisArray, firstFiveArray, megaArray, tiesArray, m, mostCommon, leastCommon){
+function addListener(x, y, otherX, otherY, thisArray, m){
   canvas.addEventListener('mousedown', function(event) {
     if(event.pageX > x && event.pageX < otherX && event.pageY < y && event.pageY > otherY){
       ctx.beginPath();
@@ -239,17 +239,12 @@ function addListener(x, y, otherX, otherY, thisArray, firstFiveArray, megaArray,
       ctx.fillStyle = 'rgb(0, 0, 0)';
       ctx.strokeStyle = 'rgb(0, 0, 0)';
 
-      if(thisArray === tiesArray){
-        if (m === 0){
-          ctx.fillText("Value: No Tie", event.pageX, event.pageY-15);
-        } else {
-          ctx.fillText("Value: " + (m+1), event.pageX, event.pageY-15);
-        }
-      } else {
-        ctx.fillText("Number: " + (m+1), event.pageX, event.pageY-15);
-      }
-      ctx.fillText("Occurences: " + thisArray[m], event.pageX, event.pageY-5);
+      if(compare === true){
+      ctx.fillText("Overpreformed", event.pageX, event.pageY-15);
+      }else{
+      ctx.fillText("Underpreformed", event.pageX, event.pageY-15);
     }
+
   }, false);
   canvas.addEventListener('mouseup', function(event) {
     if(event.pageX > x && event.pageX < otherX && event.pageY < y && event.pageY > otherY){
